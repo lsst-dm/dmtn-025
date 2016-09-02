@@ -175,13 +175,14 @@ Results
 We evaluated each project listed earlier based on criteria described in the
 previous section using available online resources, i.e., white papers,
 documentation, described use cases, and users’ opinions. Our findings best
-summarizes the table below. ``N/A`` denotes pieces of information we were not
-able to determine at the current level of scrutiny.
+summarizes :numref:`survey-summary` (entries marked with a question mark denote
+pieces of information we were not able to determine at the current level of
+scrutiny).  For sake of completeness, we also provide more in-depth reviews
+concerning each investigated workflow management system for an interested
+reader.
 
 .. include:: include/table.txt
 
-For sake of completeness, we also provide in-depth reviews concerning each
-investigated workflow management system for an interested reader.
 
 .. _summary:
 
