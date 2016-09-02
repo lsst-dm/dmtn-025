@@ -9,7 +9,7 @@ Overview
 
 `Swift`_ is a simple, implicitly parallel functional language with C-like
 syntax, written in Java, and released on Apache Licence, ver. 2. Its latest
-stable version, 0.96.2, was released in August, 2015. From its `white paper`_:
+stable version, 0.96.2, was released in August, 2015. From its `white paper`__:
 
     Swift is a scripting language designed for composing application programs
     into parallel applications that can be executed on multicore processors,
@@ -21,8 +21,7 @@ stable version, 0.96.2, was released in August, 2015. From its `white paper`_:
     Swift uses a C-like syntax consisting of function definitions and
     expressions, with dataflow-driven semantics and implicit parallelism.
 
-
-.. _white paper: http://swift-lang.org/papers/pdfs/SwiftLanguageForDistributedParallelScripting.pdf
+.. __: http://swift-lang.org/papers/pdfs/SwiftLanguageForDistributedParallelScripting.pdf
 
 Features
 --------
@@ -57,9 +56,9 @@ job execution by using POSIX fork, GlobusGRAM, Condor and Condor-G, PBS, SGE,
 SLURM, LSF, and SSH services.  Swift workflows can be used on many remote
 computational resources including Beagle (UChicago), Blues (LCRC), Edison
 (NERSC), EC2 (Amazon), Open Science Grid, Stampede (XSEDE/TACC), Swan (Cray
-MPN). Complete list of supported sites can be found in this `location`_.
+MPN). Complete list of supported sites can be found in this `location`__.
 
-.. _location: http://swift-lang.org/swift-tutorial/doc/tutorial.html#_strong_tutorial_section_two_strong
+.. __: http://swift-lang.org/swift-tutorial/doc/tutorial.html#_strong_tutorial_section_two_strong
 
 Reliability
 ^^^^^^^^^^^
@@ -85,14 +84,16 @@ Support
 
 There are also two mailing lists for dealing with project’s issues [#]_:
 
-1.  `swift-user`_ to report problems and receive assistance from the team and
-    community,
-2.  `swift-devel`_ for contributors and people interested in discussing
-    implementation issues.
+1.  `swift-user <mailto:swift-user@ci.uchicago.edu>`__ to report problems and
+    receive assistance from the team and community,
+2.  `swift-devel <mailto:swift-devel@ci.uchicago.edu>`__ for contributors and
+    people interested in discussing implementation issues.
 
-Though in the latest project `report`_ from October 5, 2015, the authors
+Though in the latest project `report`__ from October 5, 2015, the authors
 admitted that many Swift users still communicate with the group through direct
 private conversations.
+
+.. __: http://swift-lang.org/papers/pdfs/SwiftNSFReport.reformatted.2015.1005.pdf
 
 In the same report they stated that at least 20 scientific teams is using Swift
 in designing and executing their workflows. Those teams form a very broad
@@ -103,10 +104,6 @@ user base is approximately 2400.
 According to Dan Katz, at the moment of writing this review the project is not
 funded. However, the NSF grant proposal for its further development has just
 been recommended for funding.
-
-.. _swift-user: mailto:swift-user@ci.uchicago.edu
-.. _swift-devel: mailto:swift-devel@ci.uchicago.edu
-.. _report: http://swift-lang.org/papers/pdfs/SwiftNSFReport.reformatted.2015.1005.pdf
 
 User experience
 ---------------

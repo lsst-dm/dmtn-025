@@ -236,7 +236,6 @@ References
 .. [#] Number of reported use cases is small but some of those projects are
        *huge*!
 .. [#] Same as above.
-.. [#] It is *not* compatible with `GNU GPL v3`_.
 .. [#] Due to migration of services at UC Computation Institute, they are
    offline at the time we are writing this review.
 

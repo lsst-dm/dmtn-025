@@ -72,10 +72,10 @@ Support
 Currently the projects is being developed and maintained by a group of 9
 programmers.
 
-There are two places where an Airflow user can seek assistance:
+There are two places where an Airflow user can seek assistance: `maling list`__ and `Gitter channel`__.
 
--  `maling list <http://mail-archives.apache.org/mod_mbox/incubator-airflow-dev/>`__ and
--  `Gitter channel <https://gitter.im/apache/incubator-airflow>`__
+.. __: http://mail-archives.apache.org/mod_mbox/incubator-airflow-dev/
+.. __: https://gitter.im/apache/incubator-airflow
 
 Community gather around the mailing list seems to be rather vibrant.  From the
 moment it was established (Apr, 2016) there were approx. 700 posts. Similarly
@@ -89,6 +89,7 @@ management system.
 Currently the project undergoes incubation at the Apache Software Foundation.
 Though it means it is not yet fully endorsed by ASF, it suggests it may have a
 sustainable source of funding in the near future.
+
 
 User experience
 ---------------
@@ -110,9 +111,10 @@ Installation and configuration
 
 Besides a working Python installation, the project does not list any external
 dependencies. Though there are other extra packages available (their complete
-list can be found `here
-<https://airflow.incubator.apache.org/installation.html#extra-packages>`__) and
-they may required some additional software to work.
+list can be found `here`__) and they may required some additional software to
+work.
+
+.. __: https://airflow.incubator.apache.org/installation.html#extra-packages
 
 Airflow installation is pretty straightforward as it can be installed *via*
 `PyPI`_ using ``pip``. Though initially, recommended installation procedure

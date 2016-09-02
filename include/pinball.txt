@@ -33,10 +33,12 @@ Support
 
 Pinball is being developed by 3 programmers associated with Pinterest.
 
-There is a Google `group`_ mentioned in official documentation for sending
+There is a Google `group`__ mentioned in official documentation for sending
 question and comments but it seems to be abandoned by developers. It is mostly
 filled with spam and few posts with actual questions about pinball were not
 addressed at all.
+
+.. __: https://groups.google.com/forum/#!forum/pinball-users
 
 We did not find any third parties using Pinball internally as its workflow
 management systems. The project does not seem to be in active development
@@ -46,7 +48,6 @@ Though Pinterest was valued at $11 billion at June, 2015 it is hard to tell how
 well Pinball project is funded and what are company’s long-term plans regarding
 it.
 
-.. _group: https://groups.google.com/forum/#!forum/pinball-users
 
 User experience
 ---------------
@@ -68,10 +69,9 @@ Pinball requires:
 Pinball uses MySQL database as persistent storage so an access to a running
 MySQL instance is also required.
 
-Installation is very easy; Pinball `package`_ is available via `PyPI`_ and can
+Installation is very easy; `Pinball package`_ is available via `PyPI`_ and can
 be installed by ``pip``.
 
-.. _package: https://pypi.python.org/pypi/pinball
 
 Hands-on experience
 ^^^^^^^^^^^^^^^^^^^
@@ -93,5 +93,6 @@ Operation Services.
 
 .. _Graphviz: http://graphviz.org/
 .. _Pinball: https://github.com/pinterest/pinball
+.. _Pinball package: https://pypi.python.org/pypi/pinball
 .. _Pinterest: https://www.pinterest.com/
 

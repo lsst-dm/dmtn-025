@@ -87,7 +87,7 @@ per month. Important bugs seem to get resolved within a few months or sooner.
 For large projects, the developers may work with external collaborators
 directly and closely, with meetings and additional customized supports.
 
-More than 10 large `projects`_ reported using Pegasus which covers a wide
+More than `10 large projects`__ reported using Pegasus which covers a wide
 variety of domains including astrophysics, seismology, bioinformatics and
 others. The notable astrophysics projects include:
 
@@ -101,12 +101,12 @@ number of tasks in one workflow approaches a million.  Total counts of tasks
 and files are O(million).  Another notable use cases are Accelerated Climate
 Modeling for Energy (ACME) and Spallation Neutron Source (SNS), both of which
 are DOE applications, in the `Panorama`_ project based on Pegasus. Example DAX
-for various projects can be found `here`_.
+for various projects can be found `here`__.
 
 The projects is funded by NSF.
 
-.. _projects: https://confluence.pegasus.isi.edu/display/pegasus/Applications
-.. _here: https://confluence.pegasus.isi.edu/display/pegasus/WorkflowGenerator
+.. __: https://confluence.pegasus.isi.edu/display/pegasus/Applications
+.. __: https://confluence.pegasus.isi.edu/display/pegasus/WorkflowGenerator
 
 User experience
 ---------------

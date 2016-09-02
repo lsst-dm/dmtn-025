@@ -20,7 +20,7 @@ with GPL3. The project is composed of three main parts:
 Its previous stable version, 0.9.50, was released in March, 2016;
 current stable is 0.9.60 but we were unable to find the release date.
 
-From project’s `documentation`_:
+From project’s `documentation`__:
 
     There are two main types of CloudSlang content, operations and flows. An
     operation contains an action, which can be written in Python or Java.
@@ -29,7 +29,7 @@ From project’s `documentation`_:
     passing data from one to the other based on operation results and outputs.
     Flows perform the “flow” part of the workflow.
 
-.. _documentation: <https://cloudslang-docs.readthedocs.io/en/v0.9.60/intro.html#cloudslang-language>
+.. __: https://cloudslang-docs.readthedocs.io/en/v0.9.60/intro.html#cloudslang-language
 
 Features
 --------
@@ -109,11 +109,11 @@ Additionally, to compile the project from its source `Apache Maven`_ >= 3.0.3
 should be available.
 
 Installation is simple, CloudSlang can be installed either by downloading
-precompiled `binary`_ or compiling from the `source`_. Docker images with
+precompiled `binary`__ or compiling from the `source`__. Docker images with
 CloudSlang are also available.
 
-.. _binary: <https://github.com/CloudSlang/cloud-slang/releases/tag/cloudslang-0.9.60.0>
-.. _source: <https://github.com/CloudSlang/cloud-slang>
+.. __: https://github.com/CloudSlang/cloud-slang/releases/tag/cloudslang-0.9.60.0
+.. __: https://github.com/CloudSlang/cloud-slang>
 
 Hands-on experience
 ^^^^^^^^^^^^^^^^^^^

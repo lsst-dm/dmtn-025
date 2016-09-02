@@ -72,10 +72,13 @@ students.
 
 There are two Google groups for dealing with project’s issues:
 
-1. `radical-pilot-users`_ (public) to report problems and get assistance from
+1. `radical-pilot-users`__ (public) to report problems and get assistance from
    the team and community,
-2. `radical-pilot-devel`_ (requires membership) for contributors and people
+2. `radical-pilot-devel`__ (requires membership) for contributors and people
    interested in discussing implementation issues.
+
+.. __: https://groups.google.com/d/forum/radical-pilot-users
+.. __: https://groups.google.com/d/forum/radical-pilot-devel
 
 The traffic on a public forum is very light (42 threads over 2 years) with one
 or two threads per month on average. All reported issues were addressed by a RP
@@ -89,9 +92,6 @@ RP is a part of `RADICAL Cybertools`_, an abstraction-based suite supporting
 science on a range of high-performance and distributed computing systems. The
 whole project is supported by two NSF grants till 2018 with a total budget
 approx $1.5M.
-
-.. _radical-pilot-users: https://groups.google.com/d/forum/radical-pilot-users
-.. _radical-pilot-devel: https://groups.google.com/d/forum/radical-pilot-devel
 
 User experience
 ---------------
@@ -132,8 +132,6 @@ Installation is very easy; `RP package`_ is available via `PyPI`_ and can be
 installed by pip. The MongoDB location is communicated to RP via an environment
 variable.
 
-.. _RP package: https://pypi.python.org/pypi/radical.pilot
-
 Hands-on experience
 ^^^^^^^^^^^^^^^^^^^
 
@@ -158,4 +156,5 @@ Production Services.
 .. _RADICAL: http://radical.rutgers.edu/
 .. _RADICAL Cybertools: https://radical-cybertools.github.io/index.html
 .. _RADICAL Pilot: https://radical-cybertools.github.io/radical-pilot/index.html
+.. _RP package: https://pypi.python.org/pypi/radical.pilot
 .. _SAGA: https://radical-cybertools.github.io/saga-python/index.html
