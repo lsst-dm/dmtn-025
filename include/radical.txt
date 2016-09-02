@@ -1,6 +1,8 @@
+
+.. _appendix-rp:
+
 Appendix G: RADICAL-Pilot
 =========================
-                         
 
 Overview
 --------
@@ -11,7 +13,6 @@ computational tasks concurrently on a multitude of different distributed
 resources, like HPC clusters and Clouds. RP is being developed by `RADICAL`_, a
 group from Rutgers University.  Its latest stable version, 0.40.3, was released
 in May, 2016.
-
 
 Features
 --------
@@ -24,7 +25,6 @@ be used to execute (theoretically) arbitrarily complex workflows and generate
 them dynamically. Jobs can be single or multi-threaded; MPI applications are
 also supported.
 
-
 Monitoring
 ^^^^^^^^^^
 
@@ -32,13 +32,11 @@ Each compute unit has a metadata associated with it which can be inspected and
 used to monitor a unit execution. However, RP do not provide any monitoring
 tools besides logging.
 
-
 Performance
 ^^^^^^^^^^^
 
 We were not able to find any metrics regarding rate of dispatching jobs or
 sustainable CPU utilization levels.
-
 
 Interoperability
 ^^^^^^^^^^^^^^^^
@@ -48,7 +46,6 @@ developed by RADICAL), a high-level API for accessing distributed resources,
 meaning that RP should work on a variety of backends such as PBS, Condor and
 Condor-G, SGE, SLURM, LSF or Amazon EC2. Data transfer is supported *via* local
 copying, SFTP, and GSISFTP protocols.
-
 
 Reliability
 ^^^^^^^^^^^
@@ -60,16 +57,12 @@ restarts or task replications are not possible.
 
 .. _state model: http://radicalpilot.readthedocs.io/en/latest/overview.html#how-do-i-know-what-goes-on-in-the-pilot-with-my-cus
 
-
 Scalability
 ^^^^^^^^^^^
 
-According to this `source`_, RP can marshal *O(10k)* distributed cores and
-schedule *O(10k)* tasks in a single application context across multiple
-distributed HPC resources.
-
-.. source: https://radical-cybertools.github.io/
-
+According to this `source <https://radical-cybertools.github.io/>`__, RP can
+marshal *O(10k)* distributed cores and schedule *O(10k)* tasks in a single
+application context across multiple distributed HPC resources.
 
 Support
 -------
@@ -100,7 +93,6 @@ approx $1.5M.
 .. _radical-pilot-users: https://groups.google.com/d/forum/radical-pilot-users
 .. _radical-pilot-devel: https://groups.google.com/d/forum/radical-pilot-devel
 
-
 User experience
 ---------------
 
@@ -115,7 +107,6 @@ understand what is going on. Also, rather annoying thing is that documentation
 is not entirely in sync with the code base. We encountered few cases when
 following documentation verbatim led to execution errors and applying “Use the
 Force, Read the Source” principle was necessary.
-
 
 Installation
 ^^^^^^^^^^^^
@@ -143,13 +134,11 @@ variable.
 
 .. _RP package: https://pypi.python.org/pypi/radical.pilot
 
-
 Hands-on experience
 ^^^^^^^^^^^^^^^^^^^
 
 Overall, writing an example workflow and executing it on a local host is
 relatively simple.
-
 
 Summary
 -------

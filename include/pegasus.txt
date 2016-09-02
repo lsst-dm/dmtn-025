@@ -1,6 +1,8 @@
+
+.. _appendix-pegasus:
+
 Appendix E: Pegasus
 ===================
-                   
 
 Overview
 --------
@@ -14,10 +16,8 @@ as part of the GriPhyN project (Grid Physics Network), with collaborations with
 `LIGO`_ from the beginning. Last release (4.6.1) was Apr 22, 2016; (4.6.0 was
 Jan 27, 2016).
 
-
 Features
 --------
-        
 
 Flexibility
 ^^^^^^^^^^^
@@ -28,14 +28,12 @@ Python API which allows to easily write DAX files in XML format. Users can
 embed a sub workflow inside a workflow, by either specifying a DAX Job in the
 DAX, or specifying a DAG Job in the DAX.
 
-
 Interoperability
 ^^^^^^^^^^^^^^^^
 
 Pegasus execution environments can be Condor pools, Grid infrastructures such
 as Open Science Grid and XSEDE, Amazon EC2, Google Cloud, and many campus HPC
 clusters.
-
 
 Monitoring
 ^^^^^^^^^^
@@ -46,7 +44,6 @@ database. The database stores both performance and provenance information. It
 provides tools for monitoring status, debugging and diagnosing failures,
 showing summary and statistics, with web dashboard and plots.
 
-
 Performance
 ^^^^^^^^^^^
 
@@ -56,7 +53,6 @@ time workflow restructuring. Runtime optimization relies on hierarchical
 workflow, as the sub-workflows are mapped and planned just-in-time, so mapping
 and execution interleaves, and allow some dynamic workflows. Full features of
 dynamic planning may be added in the future.
-
 
 Reliability
 ^^^^^^^^^^^
@@ -71,7 +67,6 @@ re-mapping portions of the workflow, by trying alternative data sources for
 staging data, and, when all else fails, by providing a rescue workflow
 containing a description of only the work that remains to be done.
 
-
 Scalability
 ^^^^^^^^^^^
 
@@ -80,7 +75,6 @@ workflow is distributed over. Pegasus runs workflows ranging from just a few
 computational tasks up to\ * 1 million* (using sub-DAG). The number of
 resources involved in executing a workflow can scale as needed without any
 impediments to performance.
-
 
 Support
 -------
@@ -114,10 +108,8 @@ The projects is funded by NSF.
 .. _projects: https://confluence.pegasus.isi.edu/display/pegasus/Applications
 .. _here: https://confluence.pegasus.isi.edu/display/pegasus/WorkflowGenerator
 
-
 User experience
 ---------------
-               
 
 Documentation
 ^^^^^^^^^^^^^
@@ -136,7 +128,6 @@ Building it from the source using ant is straightforward. Though we failed to
 build it on Mac due to an error related to OpenSSL and we didn’t attempt to
 solve the problem, compiling it on Centos went fine.
 
-
 Hands-on experience
 ^^^^^^^^^^^^^^^^^^^
 
@@ -145,7 +136,6 @@ the first stage of LSST DRP processing. Pegasus’ own tools cannot visualize a
 workflow unless it is executed successfully; this makes debugging DAX
 construction difficult for beginners. Besides linking the input/output, the job
 dependency needs to be specified explicitly.
-
 
 Summary
 -------
@@ -158,7 +148,6 @@ execution. The same workflow can run across a heterogeneous set of resources.
 Its performance and scalability was already tested in many large scientific
 projects. Thus, we recommend Pegasus for further testing regarding its
 application for LSST Batch Product Services.
-
 
 Comments
 --------

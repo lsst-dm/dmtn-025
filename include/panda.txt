@@ -1,6 +1,8 @@
+
+.. _appendix-panda:
+
 Appendix D: PanDa
 =================
-                 
 
 Overview
 --------
@@ -12,10 +14,8 @@ since 2008 and was released under `Apache License, v2.0`_. While it was
 originally designed specifically for ATLAS, the core design of PanDA is not
 experiment specific.
 
-
 Features
 --------
-
 
 Flexibility
 ^^^^^^^^^^^
@@ -27,13 +27,11 @@ of `JEDI`_ and `DEFT`_, though we might note that these are relatively recent
 additions. They utilize `GraphML`_ format to represent a DAG corresponding to a
 given workflow.
 
-
 Monitoring
 ^^^^^^^^^^
 
 PanDA comes with a web based monitoring and browsing system that provides an
 interface to PanDA for users and operators.
-
 
 Performance
 ^^^^^^^^^^^
@@ -42,7 +40,6 @@ PanDa proved itself as a scalable and reliable system capable of handling very
 large workflow. In 2014, PanDA processed about a million jobs per day, with
 about 150,000 jobs running at any given time.
 
-
 Interoperability
 ^^^^^^^^^^^^^^^^
 
@@ -50,10 +47,8 @@ The BigPanDA project was established in 2012 as an extension of the PanDA
 project. BigPanDA strives to generalize PanDA for use by other experiments, and
 to extend its scope to computing clouds and HPC platforms.
 
-
 Reliability
 ^^^^^^^^^^^
-
 
 Scalability
 ^^^^^^^^^^^
@@ -66,10 +61,8 @@ Support
 
 The PanDA analysis user community numbers over 1400.
 
-
 User experience
 ---------------
-               
 
 Documentation
 ^^^^^^^^^^^^^
@@ -79,7 +72,6 @@ numerous components. However, it does not provide any tutorial or a user guide.
 Thus, taking into account project’s scale, there is a significant overhead for
 newcomers to overcome just to get started with it.
 
-
 Installation
 ^^^^^^^^^^^^
 
@@ -87,12 +79,10 @@ At this point, we did not installed PanDA locally. Though taking into
 account that it is a complex, multicomponent systems its installation
 process may *not* be trivial.
 
-
 Hands-on experience
 ^^^^^^^^^^^^^^^^^^^
 
 See above.
-
 
 Summary
 -------

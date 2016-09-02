@@ -1,6 +1,8 @@
+
+.. _appendix-airflow:
+
 Appendix A: Airflow
 ===================
-                   
 
 Overview
 --------
@@ -11,7 +13,6 @@ and released under `Apache License, v2.0`_.  The project was started in the
 fall of 2014 by Maxime Beauchemin at Airbnb and officially brought under the
 Airbnb Github and announced in the spring of 2015. The project joined the
 Apache Software Foundation’s incubation program in the winter of 2016.
-
 
 Features
 --------
@@ -25,19 +26,16 @@ templating. Thus workflows can be generated programmatically. Additionally, it
 has a simple plugin manager that can integrate external features into its core
 if required.
 
-
 Monitoring
 ^^^^^^^^^^
 
 Airflow comes with the web dashboard allowing a user to visualize, manage and
 monitor execution of available workflows.
 
-
 Performance
 ^^^^^^^^^^^
 
 We were not able to find any solid performance metrics of Airflow.
-
                 
 Interoperability
 ^^^^^^^^^^^^^^^^
@@ -46,31 +44,27 @@ Airflow comes fully loaded with ways to interact with commonly used systems
 like Hive, Presto, MySQL, HDFS, Postgres and S3. Sources I came across do not
 mentioned more HPC-oriented technologies/protocols though, in theory, it may be
 easily extensible due to its modular architecture.
-
            
 Reliability
 ^^^^^^^^^^^
 
 Airflow supports retrying failed tasks. However, it seems that workflow
 restarts are not directly supported although this `blogpost
-<https://medium.com/handy-tech/airflow-tips-tricks-and-pitfalls-9ba53fba14eb#.j8m7k7c5i>`_
-describes how to use of subdags to emulate them.
-
+<http://ls.st/7nk>`__ describes how to use of subdags to emulate them.
            
 Scalability
 ^^^^^^^^^^^
 
 Project’s website claims that due to its modularity Airflow can orchestrate
 arbitrary number of tasks and workers. In their own `words
-<https://github.com/apache/incubator-airflow#principles>`_:
+<https://github.com/apache/incubator-airflow#principles>`__:
 
     Airflow is ready to scale to infinity.
     
 Sadly enough, they do not provide any solid data to support this bold claim.
-`One <http://www.slideshare.net/criccomini/airflow-at-wepay>`_ example we were
+`One <http://www.slideshare.net/criccomini/airflow-at-wepay>`__ example we were
 able to find, mentions running 20’000 tasks per day on a 32-core machine which
 is not particularly impressive from a HPC perspective.
-
 
 Support
 -------
@@ -80,22 +74,21 @@ programmers.
 
 There are two places where an Airflow user can seek assistance:
 
--  `maling list <http://mail-archives.apache.org/mod_mbox/incubator-airflow-dev/>`_ and
--  `Gitter channel <https://gitter.im/apache/incubator-airflow>`_
+-  `maling list <http://mail-archives.apache.org/mod_mbox/incubator-airflow-dev/>`__ and
+-  `Gitter channel <https://gitter.im/apache/incubator-airflow>`__
 
 Community gather around the mailing list seems to be rather vibrant.  From the
 moment it was established (Apr, 2016) there were approx. 700 posts. Similarly
 with Gitter channel, there are quite a few Airflow users who may be asked for
 help if needed.
 
-Project’s GitHub `page <https://github.com/apache/incubator-airflow>`_ lists
+Project’s GitHub `page <https://github.com/apache/incubator-airflow>`__ lists
 39 companies which declared that they are using Airflow as their workflow
 management system.
 
 Currently the project undergoes incubation at the Apache Software Foundation.
 Though it means it is not yet fully endorsed by ASF, it suggests it may have a
 sustainable source of funding in the near future.
-
 
 User experience
 ---------------
@@ -112,18 +105,17 @@ chapter regarding, rather feature-rich, Airflow’s web UI. It is basically a
 catalog of screenshot focused more on displaying some its features rather than
 explaining how to work with it in some organized manner.
 
-
 Installation and configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Besides a working Python installation, the project does not list any external
 dependencies. Though there are other extra packages available (their complete
 list can be found `here
-<https://airflow.incubator.apache.org/installation.html#extra-packages>`_) and
+<https://airflow.incubator.apache.org/installation.html#extra-packages>`__) and
 they may required some additional software to work.
 
 Airflow installation is pretty straightforward as it can be installed *via*
-PyPI using ``pip``. Though initially, recommended installation procedure
+`PyPI`_ using ``pip``. Though initially, recommended installation procedure
 
 .. prompt:: bash
 
@@ -138,7 +130,6 @@ with
 
 to make it work.
 
-
 Hands-on experience
 ^^^^^^^^^^^^^^^^^^^
 
@@ -149,7 +140,6 @@ scale up number of workers) requires setting up a real database backend (e.g.
 MySQL or Postgres) separately. If workers are to be executed on remote sites,
 setting up a message broker (e.g. `Rabbitmq`_ or `Redis`_) and `Celery`_ queue
 on top of that is required.
-
 
 Summary
 -------

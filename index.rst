@@ -1,5 +1,6 @@
 :tocdepth: 1
 
+.. _scope:
 
 Scope of document
 =================
@@ -8,7 +9,6 @@ This document summarizes the results of the survey regarding viable candidates
 for a workflow management system (WMS) to be used by LSST Batch Production
 Services [CONOPS]_. A WMS helps automate orchestration and execution of large
 batches of tasks on available, possibly distributed, computational resources.
-
 
 .. _intro:
 
@@ -26,8 +26,9 @@ invariably introduces additional levels of complexity related to load
 balancing, data storage and transfer, monitoring tasks’ execution and handling
 their failures.  Attempts to automate aforementioned aspects of the
 orchestration process led in recent years to proliferation of frameworks and
-libraries commonly known as **workflow management systems**. This `site`_ alone
-lists over 70 existing, open-sourced WMS and is far from being complete.
+libraries commonly known as **workflow management systems**. This `site
+<http://ls.st/5pc>`__ alone lists over 70 existing, open-sourced WMS and is far
+from being complete.
 
 At the time of writing this report (Aug, 2016), it is hard to point to any
 clearly defined “winners” or, at least dominating, standards in the field.
@@ -49,8 +50,7 @@ character. Its goal is *not* to select a future workflow management system for
 the LSST project but to select 3 or 4 close contenders for further, more
 elaborate, testing with LSST stack in HPC environment.
 
-.. _site: https://github.com/common-workflow-language/common-workflow-language/wiki/Existing-Workflow-systems
-
+.. _methodology:
 
 Methodology of the survey
 =========================
@@ -68,7 +68,6 @@ physics and picked one of the prominent workflows from there (Panda). Each of
 the candidates was then reviewed against the set of criteria which may be
 divided into three main categories described in more detail below.
 
-
 Technical merits
 ----------------
 
@@ -78,7 +77,6 @@ making sure that the workflow system that was picked is established and well
 proven, since it should last for the project duration and we want to make sure
 we can get help from the community both with questions, help with solving
 problems and the ability to add back to the workflow system picked.
-
 
 Flexibility in workflow generation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -90,7 +88,6 @@ different degrees of freedom and flexibility for workflow’s authors and
 therefore we consider this aspect an important characteristic of a workflow
 management system.
 
-
 Interoperability
 ^^^^^^^^^^^^^^^^
 
@@ -100,7 +97,6 @@ project’s execution environments may differ from the one a WMS was designed
 for, it is essential to know what technologies a given system can cooperate
 with currently or how easy it can be extended to support others.
 
-
 Scalability
 ^^^^^^^^^^^
 
@@ -109,7 +105,6 @@ management systems is able to handle both small and large workflows (in terms
 of number of tasks) equally well, e.g., that memory requirements grows
 sufficiently slow with increasing number of tasks in a workflow.
 
-
 Performance
 ^^^^^^^^^^^
 
@@ -117,7 +112,6 @@ Though scheduling tasks and tracking their provenance is not a particularly
 CPU-intensive process, we wanted to be sure that under large load a workflow
 management system will not become a bottleneck and will utilize available
 resources efficiently.
-
            
 Reliability
 ^^^^^^^^^^^
@@ -128,7 +122,6 @@ support automatic **retries**, i.e., rerun the failing task, to be able to deal
 with transient errors (e.g. a temporary network downtime). It should also track
 tasks’ provenance to allow for a workflow **restart** in case of more permanent
 execution errors (e.g.  runtime errors due to flawed input).
-
                 
 Monitoring tools
 ^^^^^^^^^^^^^^^^
@@ -138,7 +131,6 @@ execution. However, with numerous large and complex workflows, going through
 logs is not a particularly useful method to monitor workflow execution in a
 real time. That is why in our survey we decided to take into account existence
 of any extra monitoring tools such as dashboards.
-
 
 Available support
 -----------------
@@ -156,7 +148,6 @@ documentation, and so on. Thus, we also decided to consider things like:
 *  number of use cases, size of the project’s community and its activity
    on available project’s channels;
 *  and last but not least, its funding.
-
 
 Overall “user experience”
 -------------------------
@@ -176,6 +167,7 @@ allowed us to address following questions:
 *  **What is the learning curve associated with creating and executing
    an example workflow?**
 
+.. _results:
 
 Results
 =======
@@ -191,6 +183,7 @@ able to determine at the current level of scrutiny.
 For sake of completeness, we also provide in-depth reviews concerning each
 investigated workflow management system for an interested reader.
 
+.. _summary:
 
 Summary
 =======
@@ -214,7 +207,6 @@ Airflow, Pegasus, and PanDA for further tests in which picked candidates will
 be used to orchestrate execution of a few specific LSST pipelines (yet to be
 determined) in NCSA’s HPC environment.
 
-
 .. include:: include/airflow.txt
 .. include:: include/cloudslang.txt
 .. include:: include/makeflow.txt
@@ -224,6 +216,7 @@ determined) in NCSA’s HPC environment.
 .. include:: include/radical.txt
 .. include:: include/swift.txt
 
+.. _references:
 
 References 
 ==========

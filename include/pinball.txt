@@ -1,6 +1,8 @@
+
+.. _appendix-pinball:
+
 Appendix F: Pinball
 ===================
-                   
 
 Overview
 --------
@@ -17,7 +19,6 @@ documentation:
     execution logic, a parser converting workflow specification to a collection
     of tokens, a scheduler allowing us to prepare workflow execution ahead of
     time, and a UI for manual control and monitoring.
-
 
 Features
 --------
@@ -47,17 +48,14 @@ it.
 
 .. _group: https://groups.google.com/forum/#!forum/pinball-users
 
-
 User experience
 ---------------
-               
 
 Documentation
 ^^^^^^^^^^^^^
 
 Besides project’s ``README`` file, Pinball’s documentation is practically
 non-existent.
-
 
 Installation
 ^^^^^^^^^^^^
@@ -75,13 +73,11 @@ be installed by ``pip``.
 
 .. _package: https://pypi.python.org/pypi/pinball
 
-
 Hands-on experience
 ^^^^^^^^^^^^^^^^^^^
 
 Taking into account overall impression (lack of decent documentation and
 support), we did not even try to setup an example workflow with Pinball.
-
 
 Summary
 -------
@@ -89,7 +85,7 @@ Summary
 Pinballs looks like a rather immature project with uncertain future.
 Practically, it has no documentation, does not seem to be actively developed,
 and support from developers looks rather poor.  `Others
-<http://bytepawn.com/pinball.html#pinball>`_ seems to come to similar
+<http://bytepawn.com/pinball.html#pinball>`__ seems to come to similar
 conclusions though to be fair at least installation issue was fixed (see the
 link above). As a result, it is not a viable candidate for use with LSST Batch
 Operation Services.

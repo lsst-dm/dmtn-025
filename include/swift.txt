@@ -1,6 +1,8 @@
+
+.. _appendix-swift:
+
 Appendix H: Swift
 =================
-                 
 
 Overview
 --------
@@ -22,10 +24,8 @@ stable version, 0.96.2, was released in August, 2015. From its `white paper`_:
 
 .. _white paper: http://swift-lang.org/papers/pdfs/SwiftLanguageForDistributedParallelScripting.pdf
 
-
 Features
 --------
-
 
 Flexibility
 ^^^^^^^^^^^
@@ -34,19 +34,16 @@ As a scripting language Swift offers a great deal of flexibility in designing
 workflows. Support for iterations and conditional executions allows for their
 dynamic generation.
 
-
 Monitoring
 ^^^^^^^^^^
 
 Swift offers no monitoring tools besides logs.
-
 
 Performance
 ^^^^^^^^^^^
 
 According to its white paper, Swift is able to dispatch thousands (approx.
 3000) of jobs per second sustaining high CPU utilization (80--95%).
-
 
 Portability
 ^^^^^^^^^^^
@@ -64,7 +61,6 @@ MPN). Complete list of supported sites can be found in this `location`_.
 
 .. _location: http://swift-lang.org/swift-tutorial/doc/tutorial.html#_strong_tutorial_section_two_strong
 
-
 Reliability
 ^^^^^^^^^^^
 
@@ -77,14 +73,12 @@ may be skipped in subsequent Swift runs. If a job has been queued on a site for
 too long (based on a configurable threshold), a replica job is submitted. If
 any of those jobs begin executing, other replicas will be cancelled.
 
-
 Scalability
 ^^^^^^^^^^^
 
 Swift easily scales in terms of size of the workflow and the resources.  It can
 effectively run few tasks on a local machine as well as hundreds of thousands
 of jobs on thousand-core clusters.
-
 
 Support
 -------
@@ -129,14 +123,13 @@ Swift specific constructs are presented without any explanation. Ironically, we
 found reading the user guide which explains Swift’s syntax and data types much
 more approachable.
 
-
 Installation
 ^^^^^^^^^^^^
 
 Swift is written in Java and depends on Java 1.7 or greater. Though not
 strictly required, the authors recommend Oracle Java.
 
-Swift/T (see :ref:`comments` section for more details) additionally will
+Swift/T (see :ref:`swift-comments` section for more details) additionally will
 require:
 
 -  an MPI implementation (MPICH, OpenMPI, etc.),
@@ -153,7 +146,6 @@ be installed in addition to JDK.
 Currently there is no binary distribution for `Swift/T`_. It has to be compiled
 from the source.
 
-
 Hands-on experience
 ^^^^^^^^^^^^^^^^^^^
 
@@ -161,7 +153,6 @@ There is a significant overhead with running even simple custom workflows as a
 user must firstly learn Swift syntax and understand it language model. But once
 those aspects are more or less understood, executing a workflow on distributed
 computer resources is rather simple.
-
 
 Summary
 -------
@@ -175,7 +166,7 @@ However, it still seems to be a viable candidate for a workflow management
 system to be used in LSST Batch Operation Services.
 
 
-.. _comments:
+.. _swift-comments:
 
 Comments
 --------

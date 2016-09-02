@@ -1,6 +1,8 @@
+
+.. _appendix-makeflow:
+
 Appendix C: Makeflow
 ====================
-
 
 Overview
 --------
@@ -16,7 +18,6 @@ execution engine `Work Queue`_, a few specialized execution engines, a personal
 user-level virtual file system `Parrots`_, and user-level distributed
 filesystem `Chirp`_.
 
-
 Features
 --------
 
@@ -30,7 +31,6 @@ script consists of a set of rules, each specifying a set of target files to
 create, a set of source files needed to create them, and a command to run.
 Makeflow relies on the file (or directories) dependencies explicitly stated in
 the rules. There seems to be no support for dynamic workflows.
-
 
 Monitoring
 ^^^^^^^^^^
@@ -47,7 +47,6 @@ several workflow patterns with small and large files, in multiple environments
 including Work Queue, Condor, Hadoop, SGE, and local. For most tests, Makeflow
 used with Work Queue achieved better performance than other environments.
 
-
 Interoperability
 ^^^^^^^^^^^^^^^^
 
@@ -59,13 +58,11 @@ commands. For some batch systems, a distributed file system shared across all
 nodes of the cluster is assumed. Though MakeFlow handles data transfer and
 caching in supported systems if used with Work Queue.
 
-
 Reliability
 ^^^^^^^^^^^
 
 By maintaining a transaction log, Makeflow can resume a workflow and continue
 from where it left off.
-
 
 Scalability
 ^^^^^^^^^^^
@@ -73,7 +70,6 @@ Scalability
 Makeflow can handle *O(1 mln)* jobs, with *O(1000)* of jobs concurrently,
 according to their 2012 paper. By using Makeflow with Work Queue, one can
 distribute the load across a collection of machines.
-
 
 Support
 -------
@@ -91,7 +87,6 @@ energy physics, and molecular dynamics.
 Over the years, the lab has been supported through multiple NSF grants, NIH
 grants, and other funds through Notre Dame.
 
-
 User experience
 ---------------
 
@@ -106,13 +101,11 @@ scarce.
 .. _user manual: http://ccl.cse.nd.edu/software/manuals/makeflow.html
 .. _tutorial: https://sites.google.com/a/illinois.edu/workflows-workshop/home/workshop-agenda/makeflow-abstract/makeflow-tutorial
 
-
 Installation
 ^^^^^^^^^^^^
 
 Installation of cctools is straightforward, using ``make``. There is no
 need to download any external packages.
-
 
 Hands-on experience
 ^^^^^^^^^^^^^^^^^^^
@@ -121,7 +114,6 @@ Overall we found Makeflow lightweight and easy to start. It is easy to create a
 simple workflow with everything hard-coded. One uses executables and files like
 in shell scripts. However, Makeflow does not support workflows to be made
 programmatically.
-
 
 Summary
 -------
@@ -133,7 +125,6 @@ available with cooperation with Work Queue which may limit the execution
 environments. On top of that, its long term support and development is
 questionable. Based on those facts, we do not recommend using MakeFlow for LSST
 Batch Production Services.
-
 
 Comments
 --------
