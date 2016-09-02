@@ -71,3 +71,10 @@
    +------------------------+------------+------------+------------+------------+------------+------------+------------+------------+
 
 ..
+
+.. rubric:: Footnotes
+
+.. [#] Staging data in and out must be included explicitly in the DAG representing a workflow with help of so called Transfer operators.
+.. [#] Number of reported use cases is small but some of those projects are *huge*!
+.. [#] Same as above.
+

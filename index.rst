@@ -183,7 +183,6 @@ reader.
 
 .. include:: include/table.txt
 
-
 .. _summary:
 
 Summary
@@ -230,13 +229,6 @@ References
    (`ref <https://sites.google.com/site/xsedeworkflows/>`).
 
 
-.. rubric:: Footnotes
-
-.. [#] Staging data in and out must be included explicitly in the DAG
-       representing a workflow with help of so called Transfer operators.
-.. [#] Number of reported use cases is small but some of those projects are
-       *huge*!
-.. [#] Same as above.
 
 
 .. _Apache License, v2.0: https://www.apache.org/licenses/LICENSE-2.0.html
