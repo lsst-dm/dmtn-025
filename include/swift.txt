@@ -82,7 +82,9 @@ of jobs on thousand-core clusters.
 Support
 -------
 
-There are also two mailing lists for dealing with project’s issues [#]_:
+There are also two mailing lists for dealing with project’s issues though Due
+to migration of services at UC Computation Institute, they are offline at the
+time we are writing this review:
 
 1.  `swift-user <mailto:swift-user@ci.uchicago.edu>`__ to report problems and
     receive assistance from the team and community,

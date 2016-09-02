@@ -237,8 +237,6 @@ References
 .. [#] Number of reported use cases is small but some of those projects are
        *huge*!
 .. [#] Same as above.
-.. [#] Due to migration of services at UC Computation Institute, they are
-   offline at the time we are writing this review.
 
 
 .. _Apache License, v2.0: https://www.apache.org/licenses/LICENSE-2.0.html
