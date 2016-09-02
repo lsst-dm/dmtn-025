@@ -1,0 +1,152 @@
+Appendix C: Makeflow
+====================
+
+
+Overview
+--------
+
+`Makeflow`_ is a portable workflow manager and allows users to express tasks
+like writing a Makefile. The project was started in 2009 at the Cooperative
+Computing Lab, University of Notre Dame by Prof. Douglas Thain and was released
+under `GNU GPL v2`_ [#]_. Last release (5.4.13) was May 5, 2016.
+
+Makeflow is bundled with other software as the Cooperative Computing Tools
+(**cctools**). Besides Makeflow, cctools also has a lightweight distributed
+execution engine `Work Queue`_, a few specialized execution engines, a personal
+user-level virtual file system `Parrots`_, and user-level distributed
+filesystem `Chirp`_.
+
+
+Features
+--------
+
+Flexibility
+^^^^^^^^^^^
+
+The syntax of MakeFlow’s workflow specification is similar to the traditional
+UNIX Make program, but more restrictive because only plain rules are allowed,
+for example no pattern rules, wildcards, or special variables. A Makeflow
+script consists of a set of rules, each specifying a set of target files to
+create, a set of source files needed to create them, and a command to run.
+Makeflow relies on the file (or directories) dependencies explicitly stated in
+the rules. There seems to be no support for dynamic workflows.
+
+
+Monitoring
+^^^^^^^^^^
+
+MakeFlow does not offer any monitoring tools besides logs. However when
+installed with Work Queue, a dashboard for monitoring tasks currently being
+executed is available.
+
+Performance
+^^^^^^^^^^^
+
+Some benchmark performance tests were done in Albrecht et al. (2012), with
+several workflow patterns with small and large files, in multiple environments
+including Work Queue, Condor, Hadoop, SGE, and local. For most tests, Makeflow
+used with Work Queue achieved better performance than other environments.
+
+
+Interoperability
+^^^^^^^^^^^^^^^^
+
+Makeflow can be deployed to a variety of different systems without
+modification, including local execution on a single multicore machine as well
+as batch systems like HTCondor, Work Queue, Sun Grid Engine (SGE) or its
+derivatives, Torque, Slurm, Moab, Chirp, or custom-defined batch submission
+commands. For some batch systems, a distributed file system shared across all
+nodes of the cluster is assumed. Though MakeFlow handles data transfer and
+caching in supported systems if used with Work Queue.
+
+
+Reliability
+^^^^^^^^^^^
+
+By maintaining a transaction log, Makeflow can resume a workflow and continue
+from where it left off.
+
+
+Scalability
+^^^^^^^^^^^
+
+Makeflow can handle *O(1 mln)* jobs, with *O(1000)* of jobs concurrently,
+according to their 2012 paper. By using Makeflow with Work Queue, one can
+distribute the load across a collection of machines.
+
+
+Support
+-------
+
+The software is maintained by one research engineer, with additional
+contributions from a small group of current graduate students.
+
+Bugs are reported and tracked on `Github`_.  Most issues are reported by group
+members. New developments seem to depend on student projects.
+
+The applications of Makeflow and cctools are mostly in bioinformatics, but
+also used in a number of smaller projects in biodiversity, data mining, high
+energy physics, and molecular dynamics.
+
+Over the years, the lab has been supported through multiple NSF grants, NIH
+grants, and other funds through Notre Dame.
+
+
+User experience
+---------------
+
+Documentation
+^^^^^^^^^^^^^
+
+Makeflow comes with a `user manual`_ and `tutorial`_ that introduce the
+Makeflow language and basic usages of the tools.  These documentations make
+starting easy; however the documentation on more advanced features seems to be
+scarce.
+
+.. _user manual: http://ccl.cse.nd.edu/software/manuals/makeflow.html
+.. _tutorial: https://sites.google.com/a/illinois.edu/workflows-workshop/home/workshop-agenda/makeflow-abstract/makeflow-tutorial
+
+
+Installation
+^^^^^^^^^^^^
+
+Installation of cctools is straightforward, using ``make``. There is no
+need to download any external packages.
+
+
+Hands-on experience
+^^^^^^^^^^^^^^^^^^^
+
+Overall we found Makeflow lightweight and easy to start. It is easy to create a
+simple workflow with everything hard-coded. One uses executables and files like
+in shell scripts. However, Makeflow does not support workflows to be made
+programmatically.
+
+
+Summary
+-------
+
+Though MakeFlow is easy to start with, workflows cannot be generated
+programmatically. Thus, generating large, complex workflows would require
+writing some custom scripts. Additionally, many of its features are only
+available with cooperation with Work Queue which may limit the execution
+environments. On top of that, its long term support and development is
+questionable. Based on those facts, we do not recommend using MakeFlow for LSST
+Batch Production Services.
+
+
+Comments
+--------
+
+For constructing large or complex workflows, MakeFlow’s developers started a
+tool called **Weaver** a few years ago. Weaver allows users to generate
+workflows in Python, and to be used with Makeflow. However, it is in
+development phase, not officially supported, and there are no recent
+developments.
+
+
+.. _Chirp: http://ccl.cse.nd.edu/software/chirp/
+.. _GitHub: https://github.com/cooperative-computing-lab/cctools
+.. _Makeflow: http://www.nd.edu/~ccl/software/makeflow
+.. _Parrots: http://ccl.cse.nd.edu/software/parrot/
+.. _Work Queue: http://ccl.cse.nd.edu/software/workqueue/

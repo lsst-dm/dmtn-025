@@ -1,0 +1,211 @@
+Appendix H: Swift
+=================
+                 
+
+Overview
+--------
+
+`Swift`_ is a simple, implicitly parallel functional language with C-like
+syntax, written in Java, and released on Apache Licence, ver. 2. Its latest
+stable version, 0.96.2, was released in August, 2015. From its `white paper`_:
+
+    Swift is a scripting language designed for composing application programs
+    into parallel applications that can be executed on multicore processors,
+    clusters, grids, clouds, and supercomputers. Unlike most other scripting
+    languages, Swift focuses on the issues that arise from the concurrent
+    execution, composition, and coordination of many independent (and,
+    typically, distributed) computational tasks. Swift scripts express the
+    execution of programs that consume and produce file-resident datasets.
+    Swift uses a C-like syntax consisting of function definitions and
+    expressions, with dataflow-driven semantics and implicit parallelism.
+
+
+.. _white paper: http://swift-lang.org/papers/pdfs/SwiftLanguageForDistributedParallelScripting.pdf
+
+
+Features
+--------
+
+
+Flexibility
+^^^^^^^^^^^
+
+As a scripting language Swift offers a great deal of flexibility in designing
+workflows. Support for iterations and conditional executions allows for their
+dynamic generation.
+
+
+Monitoring
+^^^^^^^^^^
+
+Swift offers no monitoring tools besides logs.
+
+
+Performance
+^^^^^^^^^^^
+
+According to its white paper, Swift is able to dispatch thousands (approx.
+3000) of jobs per second sustaining high CPU utilization (80--95%).
+
+
+Portability
+^^^^^^^^^^^
+
+Remote execution and data transfer are provided by abstract interfaces called
+**providers** thus Swift execution model can be extended to new computational
+environments by implementing new data and/or execution providers. Currently
+implemented **data providers** supports protocols including direct local
+copying, GridFTP, HTTP, WebDAV, SCP, and FTP.  **Execution providers** enable
+job execution by using POSIX fork, GlobusGRAM, Condor and Condor-G, PBS, SGE,
+SLURM, LSF, and SSH services.  Swift workflows can be used on many remote
+computational resources including Beagle (UChicago), Blues (LCRC), Edison
+(NERSC), EC2 (Amazon), Open Science Grid, Stampede (XSEDE/TACC), Swan (Cray
+MPN). Complete list of supported sites can be found in this `location`_.
+
+.. _location: http://swift-lang.org/swift-tutorial/doc/tutorial.html#_strong_tutorial_section_two_strong
+
+
+Reliability
+^^^^^^^^^^^
+
+There are three reliability mechanisms implemented by Swift runtime
+environment: **retries**, **restarts**, and **replications**. It means that
+Swift will automatically rerun a failing job completely reattempting site
+selection, stage-in, execution, and stage-out. It also keeps a restart log that
+encapsulates which function invocations have been successfully completed and
+may be skipped in subsequent Swift runs. If a job has been queued on a site for
+too long (based on a configurable threshold), a replica job is submitted. If
+any of those jobs begin executing, other replicas will be cancelled.
+
+
+Scalability
+^^^^^^^^^^^
+
+Swift easily scales in terms of size of the workflow and the resources.  It can
+effectively run few tasks on a local machine as well as hundreds of thousands
+of jobs on thousand-core clusters.
+
+
+Support
+-------
+
+There are also two mailing lists for dealing with project’s issues [#]_:
+
+1.  `swift-user`_ to report problems and receive assistance from the team and
+    community,
+2.  `swift-devel`_ for contributors and people interested in discussing
+    implementation issues.
+
+Though in the latest project `report`_ from October 5, 2015, the authors
+admitted that many Swift users still communicate with the group through direct
+private conversations.
+
+In the same report they stated that at least 20 scientific teams is using Swift
+in designing and executing their workflows. Those teams form a very broad
+spectrum of scientific activities including physical, biological, social, and
+computer sciences. Based on unique IPs accessing project’s site, the estimated
+user base is approximately 2400.
+
+According to Dan Katz, at the moment of writing this review the project is not
+funded. However, the NSF grant proposal for its further development has just
+been recommended for funding.
+
+.. _swift-user: mailto:swift-user@ci.uchicago.edu
+.. _swift-devel: mailto:swift-devel@ci.uchicago.edu
+.. _report: http://swift-lang.org/papers/pdfs/SwiftNSFReport.reformatted.2015.1005.pdf
+
+User experience
+---------------
+
+Documentation
+^^^^^^^^^^^^^
+
+Swift comes with a really extensive documentation and numerous, more in-depth
+scientific papers presenting its design and various performance metrics. Though
+its tutorial is rather limited. It does not provide much introductory
+information but shows examples of Swift scripts for various basic workflow.
+Granted, with C-like syntax getting the general idea is rather easy but some
+Swift specific constructs are presented without any explanation. Ironically, we
+found reading the user guide which explains Swift’s syntax and data types much
+more approachable.
+
+
+Installation
+^^^^^^^^^^^^
+
+Swift is written in Java and depends on Java 1.7 or greater. Though not
+strictly required, the authors recommend Oracle Java.
+
+Swift/T (see :ref:`comments` section for more details) additionally will
+require:
+
+-  an MPI implementation (MPICH, OpenMPI, etc.),
+-  Tcl 8.6,
+-  Software development tools: gcc, make, SWIG,
+-  optionally, ZSH for the build script.
+
+Installation is very simple. Swift can be installed either by downloading
+precompiled `binary <http://swift-lang.org/packages/swift-0.96.2.tar.gz>`__
+distribution or compiling its `source
+<https://github.com/swift-lang/swift-k>`__ though for that `Apache Ant`_ has to
+be installed in addition to JDK.
+
+Currently there is no binary distribution for `Swift/T`_. It has to be compiled
+from the source.
+
+
+Hands-on experience
+^^^^^^^^^^^^^^^^^^^
+
+There is a significant overhead with running even simple custom workflows as a
+user must firstly learn Swift syntax and understand it language model. But once
+those aspects are more or less understood, executing a workflow on distributed
+computer resources is rather simple.
+
+
+Summary
+-------
+
+Swift seems to be a feature-rich, thoughtfully designed piece of software with
+well written, extensive documentation, and quite thoroughly tested in
+scientific settings. It major drawback comes from the fact that there is rather
+steep learning curve associated with getting acquainted with its language
+model. There is also a minor issue of lacking any high-level monitoring tools.
+However, it still seems to be a viable candidate for a workflow management
+system to be used in LSST Batch Operation Services.
+
+
+.. _comments:
+
+Comments
+--------
+
+This review focuses mainly on Swift/K version which runs on the Karajan grid
+workflow engine and is designed to execute a workflow of program executions
+across wide area resources, exploiting diverse schedulers (PBS, Condor, etc.)
+and data transfer technologies. There exists also a newer implementation of the
+Swift language for high-performance computing called `Swift/T`_. In this
+implementation, the Swift script is translated into an MPI program that uses
+the Turbine and `ADLB`_ runtime libraries for highly scalable dataflow
+processing over MPI on a *single* large system. Comparing to Swift/K it offers:
+
+-  Enhanced performance: 1.5 billion tasks/s;
+-  Ability to call native code functions (C, C++, Fortran);
+-  Ability to execute scripts in embedded interpreters (Python, R, Tcl,
+   Julia, etc.);
+-  Enhanced built-in libraries (string, math, system, etc.).
+
+Its latest stable version, 0.8.0, was released in April, 2015.
+
+According to Daniel Katz, once ability to execute tasks at different
+computational sites is implemented in Swift/T, Swift/K version will be
+deprecated. At the same time, Swift scripts written for Swift/K should require
+little to no modifications to be able to run with Swift/T.
+
+Swift/K uses Globus as middleware to talk to various resources.
+
+
+.. _Apache Ant: http://ant.apache.org/
+.. _Swift: http://swift-lang.org/main/index.php
+.. _Swift/T: http://swift-lang.org/Swift-T
+.. _ADLB: http://www.mcs.anl.gov/project/adlb-asynchronous-dynamic-load-balancer
