@@ -82,9 +82,7 @@ of jobs on thousand-core clusters.
 Support
 -------
 
-There are also two mailing lists for dealing with project’s issues though Due
-to migration of services at UC Computation Institute, they are offline at the
-time we are writing this review:
+There are also two mailing lists for dealing with project’s issues: 
 
 1.  `swift-user <mailto:swift-user@ci.uchicago.edu>`__ to report problems and
     receive assistance from the team and community,
@@ -96,6 +94,11 @@ admitted that many Swift users still communicate with the group through direct
 private conversations.
 
 .. __: http://swift-lang.org/papers/pdfs/SwiftNSFReport.reformatted.2015.1005.pdf
+
+.. note::
+   Due to migration of services at UC Computation Institute they are offline at
+   the time we were writing this review and may still remain inaccessible.
+
 
 In the same report they stated that at least 20 scientific teams is using Swift
 in designing and executing their workflows. Those teams form a very broad
