@@ -223,10 +223,10 @@ References
 
 .. [CONOPS]
    Concept of Operations for the LSST Batch Production Services
-   (`ref <http://ls.st/cr4>`).
+   (http://ls.st/cr4).
 .. [XSEDE]
    Workflow Systems on XSEDE, tutorial presented at XSEDE15 and XSEDE16
-   (`ref <https://sites.google.com/site/xsedeworkflows/>`).
+   (https://sites.google.com/site/xsedeworkflows/).
 
 
 .. _Apache License, v2.0: https://www.apache.org/licenses/LICENSE-2.0.html
