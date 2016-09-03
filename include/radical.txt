@@ -1,0 +1,160 @@
+
+.. _appendix-rp:
+
+Appendix G: RADICAL-Pilot
+=========================
+
+Overview
+--------
+
+`RADICAL Pilot`_ (RP) is a pilot job system (a library) written in Python and
+released on `MIT License`_. It allows a user to run large numbers of
+computational tasks concurrently on a multitude of different distributed
+resources, like HPC clusters and Clouds. RP is being developed by `RADICAL`_, a
+group from Rutgers University.  Its latest stable version, 0.40.3, was released
+in May, 2016.
+
+Features
+--------
+
+Flexibility
+^^^^^^^^^^^
+
+As RP is a library, its workflow specifications are Python scripts. Thus RP can
+be used to execute (theoretically) arbitrarily complex workflows and generate
+them dynamically. Jobs can be single or multi-threaded; MPI applications are
+also supported.
+
+Monitoring
+^^^^^^^^^^
+
+Each compute unit has a metadata associated with it which can be inspected and
+used to monitor a unit execution. However, RP do not provide any monitoring
+tools besides logging.
+
+Performance
+^^^^^^^^^^^
+
+We were not able to find any metrics regarding rate of dispatching jobs or
+sustainable CPU utilization levels.
+
+Interoperability
+^^^^^^^^^^^^^^^^
+
+RP is built on top of The Simple API for Grid Applications (`SAGA`_, also being
+developed by RADICAL), a high-level API for accessing distributed resources,
+meaning that RP should work on a variety of backends such as PBS, Condor and
+Condor-G, SGE, SLURM, LSF or Amazon EC2. Data transfer is supported *via* local
+copying, SFTP, and GSISFTP protocols.
+
+Reliability
+^^^^^^^^^^^
+
+Each compute unit progress through a certain `state model`_ and failed units
+can be easily detected. However, RP documentation does not provide examples of
+any recovery mechanisms beyond simple retries.  As far as we can tell workflow
+restarts or task replications are not possible.
+
+.. _state model: http://radicalpilot.readthedocs.io/en/latest/overview.html#how-do-i-know-what-goes-on-in-the-pilot-with-my-cus
+
+Scalability
+^^^^^^^^^^^
+
+According to this `source <https://radical-cybertools.github.io/>`__, RP can
+marshal *O(10k)* distributed cores and schedule *O(10k)* tasks in a single
+application context across multiple distributed HPC resources.
+
+Support
+-------
+
+The group developing RP consists of 4 researchers and developers and 10
+students.
+
+There are two Google groups for dealing with project’s issues:
+
+1. `radical-pilot-users`__ (public) to report problems and get assistance from
+   the team and community,
+2. `radical-pilot-devel`__ (requires membership) for contributors and people
+   interested in discussing implementation issues.
+
+.. __: https://groups.google.com/d/forum/radical-pilot-users
+.. __: https://groups.google.com/d/forum/radical-pilot-devel
+
+The traffic on a public forum is very light (42 threads over 2 years) with one
+or two threads per month on average. All reported issues were addressed by a RP
+developer rather quickly.
+
+It seems that the community is very small, e.g. few users. On top of that, not
+a single showcase is mentioned on project’s website and we were unable to find
+any external project claiming using RP internally.
+
+RP is a part of `RADICAL Cybertools`_, an abstraction-based suite supporting
+science on a range of high-performance and distributed computing systems. The
+whole project is supported by two NSF grants till 2018 with a total budget
+approx $1.5M.
+
+User experience
+---------------
+
+Documentation
+^^^^^^^^^^^^^
+
+Documentation includes a tutorial, with ready to run example scripts,
+introducing various aspects of working with RP, e.g., setting up a session,
+monitoring jobs, staging input and output data. However, one have to at least
+scheme the user guide anyway to be already familiar with core RP concepts to
+understand what is going on. Also, rather annoying thing is that documentation
+is not entirely in sync with the code base. We encountered few cases when
+following documentation verbatim led to execution errors and applying “Use the
+Force, Read the Source” principle was necessary.
+
+Installation
+^^^^^^^^^^^^
+
+RP requires the following packages:
+
+-  Python >= 2.7,
+-  Virtualenv >= 1.11,
+-  Pip == 1.4.1 
+  
+   .. warning::
+      They really mean it! Newer versions of ``pip`` fail to install RP
+      properly without emitting any errors.
+
+Using RP on remote machines requires also setting up a *passwordless* login to
+the particular machine. Besides that, RP needs to access to a `MongoDB`_
+server. The server is used to store and retrieve operational data during the
+execution of an application using RP. The MongoDB server must be reachable from
+*both,* the host that runs the RP application and the target resource which
+runs the pilots.
+
+Installation is very easy; `RP package`_ is available via `PyPI`_ and can be
+installed by pip. The MongoDB location is communicated to RP via an environment
+variable.
+
+Hands-on experience
+^^^^^^^^^^^^^^^^^^^
+
+Overall, writing an example workflow and executing it on a local host is
+relatively simple.
+
+Summary
+-------
+
+Though RADICAL-Pilot comes with relatively decent documentation, offers a great
+deal of flexibility in writing workflows, and should integrate well with
+typical HPC environment. Despite those advantages it comes with two serious
+limitations. Firstly, it only supports data on file abstraction level, so data
+== files at this moment which may not integrate well with data butler used by
+LSST Stack. Secondly, though the developers claim to fix it in a near future,
+RP is *not* yet able to function in environment using Anaconda based Python
+distribution. Thus it has to be ruled out as a viable candidate for LSST Batch
+Production Services.
+
+
+.. _MongoDB: https://www.mongodb.com/
+.. _RADICAL: http://radical.rutgers.edu/
+.. _RADICAL Cybertools: https://radical-cybertools.github.io/index.html
+.. _RADICAL Pilot: https://radical-cybertools.github.io/radical-pilot/index.html
+.. _RP package: https://pypi.python.org/pypi/radical.pilot
+.. _SAGA: https://radical-cybertools.github.io/saga-python/index.html

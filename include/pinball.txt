@@ -1,0 +1,98 @@
+
+.. _appendix-pinball:
+
+Appendix F: Pinball
+===================
+
+Overview
+--------
+
+`Pinball`_ is a workflow management platform developed at `Pinterest`_, written
+in Python, and distributed under `Apache License, v2.0`_.  From project’s
+documentation:
+
+    [Pinball] is built based on layered approach. The base layer provides a
+    generic master-worker model. Master maintains the system state represented
+    by a collection of abstract tokens. Tokens are claimed and modified by
+    workers implementing application specific logic. The application layer
+    introduces tokens specific to workflows, workers implementing the job
+    execution logic, a parser converting workflow specification to a collection
+    of tokens, a scheduler allowing us to prepare workflow execution ahead of
+    time, and a UI for manual control and monitoring.
+
+Features
+--------
+
+Sadly, available online resources does not provide any metrics regarding
+Pinball’s flexibility, performance metrics, interoperability, reliability and
+scalability. Supposedly, there is a web-based UI to monitor workflow execution,
+but there is no documentation regarding it.
+
+Support
+-------
+
+Pinball is being developed by 3 programmers associated with Pinterest.
+
+There is a Google `group`__ mentioned in official documentation for sending
+question and comments but it seems to be abandoned by developers. It is mostly
+filled with spam and few posts with actual questions about pinball were not
+addressed at all.
+
+.. __: https://groups.google.com/forum/#!forum/pinball-users
+
+We did not find any third parties using Pinball internally as its workflow
+management systems. The project does not seem to be in active development
+anymore; its GitHub repo shows only few commits during last year.
+
+Though Pinterest was valued at $11 billion at June, 2015 it is hard to tell how
+well Pinball project is funded and what are company’s long-term plans regarding
+it.
+
+
+User experience
+---------------
+
+Documentation
+^^^^^^^^^^^^^
+
+Besides project’s ``README`` file, Pinball’s documentation is practically
+non-existent.
+
+Installation
+^^^^^^^^^^^^
+
+Pinball requires:
+
+-  `Graphviz`_: a graph visualization software,
+-  ``libmysqlclient``: MySQL client libraries.
+
+Pinball uses MySQL database as persistent storage so an access to a running
+MySQL instance is also required.
+
+Installation is very easy; `Pinball package`_ is available via `PyPI`_ and can
+be installed by ``pip``.
+
+
+Hands-on experience
+^^^^^^^^^^^^^^^^^^^
+
+Taking into account overall impression (lack of decent documentation and
+support), we did not even try to setup an example workflow with Pinball.
+
+Summary
+-------
+
+Pinballs looks like a rather immature project with uncertain future.
+Practically, it has no documentation, does not seem to be actively developed,
+and support from developers looks rather poor.  `Others
+<http://bytepawn.com/pinball.html#pinball>`__ seems to come to similar
+conclusions though to be fair at least installation issue was fixed (see the
+link above). As a result, it is not a viable candidate for use with LSST Batch
+Operation Services.
+
+
+.. _Graphviz: http://graphviz.org/
+.. _Pinball: https://github.com/pinterest/pinball
+.. _Pinball package: https://pypi.python.org/pypi/pinball
+.. _Pinterest: https://www.pinterest.com/
+

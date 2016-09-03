@@ -1,0 +1,184 @@
+
+.. _appendix-pegasus:
+
+Appendix E: Pegasus
+===================
+
+Overview
+--------
+
+`Pegasus`_ workflow management system maps abstract workflow descriptions (DAX)
+to concrete Directed Acyclic Graph (DAG) representations with resources,
+coordinates and automates data movement, and submits to execution in various
+environments. The package, distributed under the `Apache License, v2.0`_ is
+written in a mix of Python, shell, Perl, and Java. The project started in 2001,
+as part of the GriPhyN project (Grid Physics Network), with collaborations with
+`LIGO`_ from the beginning. Last release (4.6.1) was Apr 22, 2016; (4.6.0 was
+Jan 27, 2016).
+
+Features
+--------
+
+Flexibility
+^^^^^^^^^^^
+
+Pegasus provides a good deal of flexibility in the generation of workflows.
+They can be created programmatically with help of provided Java, Perl, and
+Python API which allows to easily write DAX files in XML format. Users can
+embed a sub workflow inside a workflow, by either specifying a DAX Job in the
+DAX, or specifying a DAG Job in the DAX.
+
+Interoperability
+^^^^^^^^^^^^^^^^
+
+Pegasus execution environments can be Condor pools, Grid infrastructures such
+as Open Science Grid and XSEDE, Amazon EC2, Google Cloud, and many campus HPC
+clusters.
+
+Monitoring
+^^^^^^^^^^
+
+Pegasus has a runtime monitoring daemon that monitors the running workflow,
+parse the workflow job, and task logs and populates them into a workflow
+database. The database stores both performance and provenance information. It
+provides tools for monitoring status, debugging and diagnosing failures,
+showing summary and statistics, with web dashboard and plots.
+
+Performance
+^^^^^^^^^^^
+
+The Pegasus mapper can reorder, group, and prioritize tasks in order to
+increase overall workflow performance. Most optimization is done at compile
+time workflow restructuring. Runtime optimization relies on hierarchical
+workflow, as the sub-workflows are mapped and planned just-in-time, so mapping
+and execution interleaves, and allow some dynamic workflows. Full features of
+dynamic planning may be added in the future.
+
+Reliability
+^^^^^^^^^^^
+
+Jobs and data transfers are automatically retried in case of failures.
+Debugging tools such as pegasus-analyzer help the user to debug the workflow in
+case of non-recoverable failures.
+
+When errors occur, Pegasus tries to recover when possible by retrying tasks, by
+retrying the entire workflow, by providing workflow-level checkpointing, by
+re-mapping portions of the workflow, by trying alternative data sources for
+staging data, and, when all else fails, by providing a rescue workflow
+containing a description of only the work that remains to be done.
+
+Scalability
+^^^^^^^^^^^
+
+Pegasus can scale both the size of the workflow, and the resources that the
+workflow is distributed over. Pegasus runs workflows ranging from just a few
+computational tasks up to\ * 1 million* (using sub-DAG). The number of
+resources involved in executing a workflow can scale as needed without any
+impediments to performance.
+
+Support
+-------
+
+There are currently 5 programmers involved in Pegasus development.
+
+There are a JIRA ticket system and a user mailing list for reporting bugs,
+issues, and general discussion. Traffic on the list is typically a few threads
+per month. Important bugs seem to get resolved within a few months or sooner.
+For large projects, the developers may work with external collaborators
+directly and closely, with meetings and additional customized supports.
+
+More than `10 large projects`__ reported using Pegasus which covers a wide
+variety of domains including astrophysics, seismology, bioinformatics and
+others. The notable astrophysics projects include:
+
+-  `LIGO`_,
+-  `IPAC Montage`_: Assembling astronomical mosaic images, with FITS files as
+   input,
+-  Kepler light curve analysis.
+
+The recent seismology project CyberShake has a high count of job metrics. The
+number of tasks in one workflow approaches a million.  Total counts of tasks
+and files are O(million).  Another notable use cases are Accelerated Climate
+Modeling for Energy (ACME) and Spallation Neutron Source (SNS), both of which
+are DOE applications, in the `Panorama`_ project based on Pegasus. Example DAX
+for various projects can be found `here`__.
+
+The projects is funded by NSF.
+
+.. __: https://confluence.pegasus.isi.edu/display/pegasus/Applications
+.. __: https://confluence.pegasus.isi.edu/display/pegasus/WorkflowGenerator
+
+User experience
+---------------
+
+Documentation
+^^^^^^^^^^^^^
+
+The beginner tutorial is nice, but documentation on features beyond the
+tutorial level vary and some seem difficult to find. Nonetheless one can learn
+from the available examples.
+
+Installation
+^^^^^^^^^^^^
+
+Pegasus lists Condor and OpenSSL as its dependencies. There are binary
+distribution available or it can be build from scratch using ant.
+
+Building it from the source using ant is straightforward. Though we failed to
+build it on Mac due to an error related to OpenSSL and we didn’t attempt to
+solve the problem, compiling it on Centos went fine.
+
+Hands-on experience
+^^^^^^^^^^^^^^^^^^^
+
+For trivial jobs, the overhead seems high. We made a much simplified mock-up of
+the first stage of LSST DRP processing. Pegasus’ own tools cannot visualize a
+workflow unless it is executed successfully; this makes debugging DAX
+construction difficult for beginners. Besides linking the input/output, the job
+dependency needs to be specified explicitly.
+
+Summary
+-------
+
+Pegasus comes with decent documentation, offers good deal of flexibility in
+workflow generation, and integrates well with variety of execution
+environments. Moreover, its workflows are portable; once a user’s workflow can
+be executed locally, no code changes or DAX generators are required for remote
+execution. The same workflow can run across a heterogeneous set of resources.
+Its performance and scalability was already tested in many large scientific
+projects. Thus, we recommend Pegasus for further testing regarding its
+application for LSST Batch Product Services.
+
+Comments
+--------
+
+Execution environment
+^^^^^^^^^^^^^^^^^^^^^
+
+The Pegasus planner needs 4 components to map out the plan and make a
+concrete workflow over the resources:
+
+-  DAX: the abstract workflow description in XML, generated by Pegasus
+   API
+-  Site catalog: describes the execution environment
+-  Replica catalog (files): specifies locations of input data
+-  Transformation catalog (executables): specifies locations of software
+   used by the workflow
+
+Pegasus relies on Condor DAGMan as the workflow execution engine.
+
+MPI support
+^^^^^^^^^^^
+
+There is a tool ``pegasus-mpi-cluster`` (PMC) to run DAG on some HPC systems.
+PMC is designed to work either as a standalone tool or as a complement to
+Pegasus.  In the mode that the entire workflow is managed by PMC (PMC-only
+mode), DAGMan and Condor are not required. Or, PMC can be used as the wrapper
+for executing clustered jobs in Pegasus. In this mode Pegasus groups several
+tasks together and submits them as a single clustered job to a remote system.
+
+
+.. _IPAC Montage: https://scitech.isi.edu/presentations/2013/rynge-montage-pegasus-amazon-adass2013.pdf
+.. _LIGO: https://scitech.isi.edu/presentations/2016/vahi-pegasus-ligo-talk-cw-2016.pdf
+.. _Panorama: https://sites.google.com/site/panoramaofworkflows/home
+.. _Pegasus: https://pegasus.isi.edu/

@@ -1,0 +1,103 @@
+
+.. _appendix-panda:
+
+Appendix D: PanDa
+=================
+
+Overview
+--------
+
+`PanDA`_ is a highly scalable and flexible data-driven workload management
+system designed to meet the demanding computing requirements of the ATLAS
+experiment at the Large Hadron Collider (LHC) at CERN. PanDA has served ATLAS
+since 2008 and was released under `Apache License, v2.0`_. While it was
+originally designed specifically for ATLAS, the core design of PanDA is not
+experiment specific.
+
+Features
+--------
+
+Flexibility
+^^^^^^^^^^^
+
+It might be emphasized that PanDA is foremost a *workload* management system
+concerned with the large scale management of jobs to a possibly diverse
+collection of computing sites. PanDA does support workflow with the combination
+of `JEDI`_ and `DEFT`_, though we might note that these are relatively recent
+additions. They utilize `GraphML`_ format to represent a DAG corresponding to a
+given workflow.
+
+Monitoring
+^^^^^^^^^^
+
+PanDA comes with a web based monitoring and browsing system that provides an
+interface to PanDA for users and operators.
+
+Performance
+^^^^^^^^^^^
+
+PanDa proved itself as a scalable and reliable system capable of handling very
+large workflow. In 2014, PanDA processed about a million jobs per day, with
+about 150,000 jobs running at any given time.
+
+Interoperability
+^^^^^^^^^^^^^^^^
+
+The BigPanDA project was established in 2012 as an extension of the PanDA
+project. BigPanDA strives to generalize PanDA for use by other experiments, and
+to extend its scope to computing clouds and HPC platforms.
+
+Reliability
+^^^^^^^^^^^
+
+Scalability
+^^^^^^^^^^^
+
+PanDA is capable of handling very large workflows.
+
+
+Support
+-------
+
+The PanDA analysis user community numbers over 1400.
+
+User experience
+---------------
+
+Documentation
+^^^^^^^^^^^^^
+
+PanDA comes with an exhaustive documentation describing architecture of all its
+numerous components. However, it does not provide any tutorial or a user guide.
+Thus, taking into account project’s scale, there is a significant overhead for
+newcomers to overcome just to get started with it.
+
+Installation
+^^^^^^^^^^^^
+
+At this point, we did not installed PanDA locally. Though taking into
+account that it is a complex, multicomponent systems its installation
+process may *not* be trivial.
+
+Hands-on experience
+^^^^^^^^^^^^^^^^^^^
+
+See above.
+
+Summary
+-------
+
+PanDA has its primary power as a workload management system. The support for
+workflow appears solid enough but is provided by more recent additions within
+noncore components. It has been highly successful for the ATLAS experiment
+computing on worldwide Grids that include European Grids, the Open Science
+Grid, etc.  However, it is a sizable system with numerous components and it
+will require significant startup costs and investment by LSST DM.  Nevertheless
+we recommend PanDA for further consideration regarding LSST Batch Operation
+Services.
+
+
+.. _DEFT: http://iopscience.iop.org/article/10.1088/1742-6596/513/3/032078/meta
+.. _GraphML: http://graphml.graphdrawing.org/
+.. _JEDI: https://twiki.cern.ch/twiki/bin/view/PanDA/PandaJEDI
+.. _PanDA: http://news.pandawms.org/

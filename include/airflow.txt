@@ -1,0 +1,163 @@
+
+.. _appendix-airflow:
+
+Appendix A: Airflow
+===================
+
+Overview
+--------
+
+`Airflow`_ is a platform to programmatically author, schedule and monitor
+workflows developed and used internally by `Airbnb`_.  It is written in Python
+and released under `Apache License, v2.0`_.  The project was started in the
+fall of 2014 by Maxime Beauchemin at Airbnb and officially brought under the
+Airbnb Github and announced in the spring of 2015. The project joined the
+Apache Software Foundation’s incubation program in the winter of 2016.
+
+Features
+--------
+
+Flexibility
+^^^^^^^^^^^
+
+Airflow’s workflows are specified as a Python code which offers a great deal of
+flexibility when designing workflows. On top of that, Airflow supports `Jinja`_
+templating. Thus workflows can be generated programmatically. Additionally, it
+has a simple plugin manager that can integrate external features into its core
+if required.
+
+Monitoring
+^^^^^^^^^^
+
+Airflow comes with the web dashboard allowing a user to visualize, manage and
+monitor execution of available workflows.
+
+Performance
+^^^^^^^^^^^
+
+We were not able to find any solid performance metrics of Airflow.
+                
+Interoperability
+^^^^^^^^^^^^^^^^
+
+Airflow comes fully loaded with ways to interact with commonly used systems
+like Hive, Presto, MySQL, HDFS, Postgres and S3. Sources I came across do not
+mentioned more HPC-oriented technologies/protocols though, in theory, it may be
+easily extensible due to its modular architecture.
+           
+Reliability
+^^^^^^^^^^^
+
+Airflow supports retrying failed tasks. However, it seems that workflow
+restarts are not directly supported although this `blogpost
+<http://ls.st/7nk>`__ describes how to use of subdags to emulate them.
+           
+Scalability
+^^^^^^^^^^^
+
+Project’s website claims that due to its modularity Airflow can orchestrate
+arbitrary number of tasks and workers. In their own `words
+<https://github.com/apache/incubator-airflow#principles>`__:
+
+    Airflow is ready to scale to infinity.
+    
+Sadly enough, they do not provide any solid data to support this bold claim.
+`One <http://www.slideshare.net/criccomini/airflow-at-wepay>`__ example we were
+able to find, mentions running 20’000 tasks per day on a 32-core machine which
+is not particularly impressive from a HPC perspective.
+
+Support
+-------
+
+Currently the projects is being developed and maintained by a group of 9
+programmers.
+
+There are two places where an Airflow user can seek assistance: `maling list`__ and `Gitter channel`__.
+
+.. __: http://mail-archives.apache.org/mod_mbox/incubator-airflow-dev/
+.. __: https://gitter.im/apache/incubator-airflow
+
+Community gather around the mailing list seems to be rather vibrant.  From the
+moment it was established (Apr, 2016) there were approx. 700 posts. Similarly
+with Gitter channel, there are quite a few Airflow users who may be asked for
+help if needed.
+
+Project’s GitHub `page <https://github.com/apache/incubator-airflow>`__ lists
+39 companies which declared that they are using Airflow as their workflow
+management system.
+
+Currently the project undergoes incubation at the Apache Software Foundation.
+Though it means it is not yet fully endorsed by ASF, it suggests it may have a
+sustainable source of funding in the near future.
+
+
+User experience
+---------------
+               
+Documentation
+^^^^^^^^^^^^^
+
+Airflow comes with a rather well written tutorial explaining how to create,
+validate and execute an example workflow. However, the user guide and API
+reference are somewhat lacking. Information is provided without a clear order
+and a level of details one would expect from a user guide. Some more advanced
+aspects (e.g. writing hooks) are not covered at all. Probably the worst is the
+chapter regarding, rather feature-rich, Airflow’s web UI. It is basically a
+catalog of screenshot focused more on displaying some its features rather than
+explaining how to work with it in some organized manner.
+
+Installation and configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Besides a working Python installation, the project does not list any external
+dependencies. Though there are other extra packages available (their complete
+list can be found `here`__) and they may required some additional software to
+work.
+
+.. __: https://airflow.incubator.apache.org/installation.html#extra-packages
+
+Airflow installation is pretty straightforward as it can be installed *via*
+`PyPI`_ using ``pip``. Though initially, recommended installation procedure
+
+.. prompt:: bash
+
+   pip install airflow
+
+did not allow us to start the scheduler. We had to install Hive operators
+with
+
+.. prompt:: bash
+
+   pip install "airflow[hive]"
+
+to make it work.
+
+Hands-on experience
+^^^^^^^^^^^^^^^^^^^
+
+The learning curve does not seem to be particularly steep and simple workflows
+can be set up with minimal overhead. Though, out of the box, Airflow uses very
+simplistic, sequential task scheduler. Using more advanced ones (allowing to
+scale up number of workers) requires setting up a real database backend (e.g.
+MySQL or Postgres) separately. If workers are to be executed on remote sites,
+setting up a message broker (e.g. `Rabbitmq`_ or `Redis`_) and `Celery`_ queue
+on top of that is required.
+
+Summary
+-------
+
+Airflow has two strong points: dynamic workflow generation (“configuration as a
+code”) and feature-rich web user interface.  Additionally, due to its modular
+design it should be, at least in theory, easily adaptable to one’s needs.
+However, being written for ETL (Extract, Transform, Load) application it is
+hard to say how well it will fit in more HPC oriented environment. Despite this
+objections, it seems to be a viable candidate for LSST Batch Production
+Services and its further testing is recommended.
+
+
+.. _Airbnb: https://www.airbnb.com/
+.. _Airflow: https://github.com/apache/incubator-airflow
+.. _Celery: http://www.celeryproject.org/
+.. _Jinja: http://jinja.pocoo.org/docs/dev/
+.. _Rabbitmq: https://www.rabbitmq.com/
+.. _Redis: http://redis.io/

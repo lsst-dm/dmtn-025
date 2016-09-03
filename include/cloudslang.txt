@@ -1,0 +1,144 @@
+.. _appendix-cloudslang:
+
+Appendix B: CloudSlang
+======================
+
+Overview
+--------
+
+`CloudSlang`_ is a flow-based orchestration tool written in Java for managing
+deployed applications and released under `Apache License, v2.0`_ compatible
+with GPL3. The project is composed of three main parts:
+
+-  the CloudSlang Orchestration Engine (Score) written in Java,
+-  the CloudSlang language: a YAML based DSL for writing human-readable
+   workflows,
+-  the ready-made CloudSlang content: a repository of common tasks and
+   content that integrates with many modern technologies, such as Docker
+   and CoreOS.
+
+Its previous stable version, 0.9.50, was released in March, 2016;
+current stable is 0.9.60 but we were unable to find the release date.
+
+From project’s `documentation`__:
+
+    There are two main types of CloudSlang content, operations and flows. An
+    operation contains an action, which can be written in Python or Java.
+    Operations perform the “work” part of the workflow. A flow contains steps,
+    which stitch together the actions performed by operations, navigating and
+    passing data from one to the other based on operation results and outputs.
+    Flows perform the “flow” part of the workflow.
+
+.. __: https://cloudslang-docs.readthedocs.io/en/v0.9.60/intro.html#cloudslang-language
+
+Features
+--------
+        
+Flexibility
+^^^^^^^^^^^
+
+Specifying workflows with the help of a YAML-like language offers a great deal
+of flexibility in their creation. Support for loops and conditional executions
+allows for their dynamic generation too.
+
+Monitoring
+^^^^^^^^^^
+
+An execution log file stores all events, and users can subscribe to events, but
+CloudSlang does not appear to provide monitoring tools or GUI to visualize the
+workflow execution.
+
+Performance
+^^^^^^^^^^^
+
+Available sources do not provide *any* data regarding CloudSlang performance
+metrics.
+
+Interoperability
+^^^^^^^^^^^^^^^^
+
+Apparently, the entire model of the CloudSlang engine assumes that it is being
+run on a single machine with shared filesystem so in-memory objects like
+variables can be transferred between actions and flows but beyond that it does
+not support any forms of data transfer.  Additionally, actions and flows are
+executed exclusively by the engine so their execution cannot be delegated to
+Condor, PBS, SLURM, etc.
+
+Reliability
+^^^^^^^^^^^
+
+The recovery mechanism guarantees that each step of an execution plan will be
+run, by monitoring status of available workers. The non-responsive workers’
+records in the queue get reassigned to other workers that pick up from the last
+known step that was executed.  However, workflow restarts are not implemented.
+
+Scalability
+^^^^^^^^^^^
+
+Project’s documentation claims that CloudSlang workflows optimized for high
+throughput and are horizontally scalable but they do not provide any
+information how big workflows it can really handle.
+
+Support
+-------
+
+Project’s website list 8 developers, HP Enterprise software engineers.
+
+It seems that the most reliable place to report issues or seek help is
+project's GitHub website as dedicated google group contains no posts at all.
+
+CloudSlang engine is embedded in HP Operations Orchestration (HP OO) which is
+by approximately 50 companies from the Fortune 500 list.
+
+User experience
+---------------
+
+Documentation
+^^^^^^^^^^^^^
+
+CloudSlang comes with an well written documentation which includes an extensive
+tutorial. The tutorial provided a nice guidance how to create a simple action
+and a flow and gently introduced more advanced aspects of YAML allowing to
+create arbitrary complex workflows.
+
+Installation
+^^^^^^^^^^^^
+
+CloudSlang is written in Java and depends on Java 7 or greater.
+Additionally, to compile the project from its source `Apache Maven`_ >= 3.0.3
+should be available.
+
+Installation is simple, CloudSlang can be installed either by downloading
+precompiled `binary`__ or compiling from the `source`__. Docker images with
+CloudSlang are also available.
+
+.. __: https://github.com/CloudSlang/cloud-slang/releases/tag/cloudslang-0.9.60.0
+.. __: https://github.com/CloudSlang/cloud-slang>
+
+Hands-on experience
+^^^^^^^^^^^^^^^^^^^
+
+Due to CloudSlang limitations (see :ref:`cloudslang-summary` for details) our
+testing did not go beyond examples from tutorial. Though, it seems, even
+complex workflows can be created with minimal overhead.
+
+.. _cloudslang-summary:
+
+Summary
+-------
+       
+Despite a nice documentation and web-based UI, CloudSlang is definitely not a
+is a viable candidate for a LSST workflow management system.  First and
+foremost, CloudSlang uses `Jython`_ implementation of Python 2.7 to execute
+Python actions and Jython is *not* a drop-in replacement for a standard
+CPython. Secondly, all the available use cases are mainly focused on automating
+devops and managing deployed applications, e.g. deploying an app that uses
+linked containers, cleaning unused docker images, or checking health status of
+an OpenStack. Thus, we do not think CloudSlang is a viable candidate for a LSST
+workflow management system.
+
+
+.. _Apache Maven: https://maven.apache.org/
+.. _CloudSlang: http://www.cloudslang.io
+.. _CloudSlang documentation: http://www.cloudslang.io
+.. _Jython: http://www.jython.org/
