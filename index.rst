@@ -229,8 +229,6 @@ References
    (`ref <https://sites.google.com/site/xsedeworkflows/>`).
 
 
-
-
 .. _Apache License, v2.0: https://www.apache.org/licenses/LICENSE-2.0.html
 .. _GNU GPL v2: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 .. _GNU GPL v3: https://www.gnu.org/licenses/gpl.html
