@@ -145,7 +145,7 @@ documentation, and so on. Thus, we also decided to consider things like:
 
 *  communication channels allowing tracking of a current project’s
    development and reporting of issues;
-*  thr number of active developer and their responsiveness in addressing
+*  the number of active developer and their responsiveness in addressing
    issues reported by users;
 *  the number of use cases, size of the project’s community and its activity
    on available project’s channels;
