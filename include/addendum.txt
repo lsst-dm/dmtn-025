@@ -1,0 +1,73 @@
+.. _addendum:
+
+Addendum
+========
+
+Currently a large process is underway to change how the middleware operates.
+This new version is the Gen3 Middleware and consists of a rewrite of Butler as
+well as the addition of SuperTasks and pre-flight. The pre-flight will use the
+`Gen3 Butler`_, as well as the `SuperTask`_ to create a **quantum graph**
+(workflow like graph) that can be executed to run the actual pipelines. This
+work is in the implementation phase, depending on the results and changes of
+this Gen3 Middleware we will re-evaluate some of the workflow systems to see
+which on fits best in this framework.
+
+During this time we have briefly looked at the Parsl software as another option
+of a workflow system as well as take the DESDM framework, which we have used in
+operations already, and ported it to Python 3 to be ready as another solution.
+
+DESDM Framework
+---------------
+
+In the past year we have looked at the DESDM framework as one of the options to
+execute the pipelines in an operations environment.  At NCSA we have experience
+running this as part of the DES project running in production for the past 5
+years for nightly processing as well as data releases.  NCSA has trained
+operators to run the software, analyze the results and retry select sections of
+the workflow. The system is ready to use and can execute tasks in parallel on a
+HTCondor cluster. Code is available for glide-ins, allowing an existing cluster
+(such as **lsst-dev**) to be configured to allow for execution of tasks from the
+DESDM framework. The framework will collect statistics, enabling us to do
+performance testing, as well as provenance tracking allowing us to find out
+exactly for each data file generated how it was generated, with what inputs and
+by whom. In the past months we have spend time on converting the existing code
+base from python 2 to python 3 to fit into the LSST software stack.  We also
+wrote LSST-specific plugins to enable running of the Gen2 LSST pipelines.   We
+have done tests using both the Python 2 version running the LSST software stack
+and RC dataset as well as using the python 3 version and the same dataset to
+test whether the DESDM framework is ready to run the existing LSST pipelines.
+
+Parsl
+-----
+
+`Parsl`_ (Parallel Scripting Library) is scripting library written in Python.
+The current version is 0.5.1. Parsl has been under development for the past 2
+years and is developed as a collaboration between The University of Chicago,
+Argonne National Laboratory and the University of Illinois. The code is
+released under the Apache 2.0 License and is available at GitHub. Parsl is a
+workflow system that can manage the data movement and execution of tasks on
+different hardware such as cloud, clusters and other resources. Tasks can be
+executed in parallel and will only be executed when required data is ready. The
+tasks that are executed are either bash scripts or Python functions. The
+functions will take arguments that are supplied during the definition of the
+workflow, such as parameters or outputs from previously executed tasks. The
+workflow system uses futures to setup the tasks to be executed, and will only
+execute those tasks that are needed for the final result. If a task requires
+the results from another task it will wait for the previous task to finish.
+Files in Parsl are abstracted allowing for the movement and placement of the
+files anywhere in the filesystem. Parsl will move the file to the required
+compute resource and the task will use the special Parsl file object to read
+and write the file from the disk, alleviating it from knowing where the file is
+actually stored. Tasks written in Python have some limitations and require all
+modules to be explicitly imported in the code, and global variables do not
+exist.  Workflows in Parsl are programmatically defined and are coded using the
+Python language, using Parsl specific functions. Tasks that are to be executed
+in this workflow system are annotated with the ``@Apps`` annotation. Parsl is a
+written from scratch and is influenced by the SWIFT language which we have
+looked at in more detail.  We have not looked into Parsl into detail yet to see
+how it would fit in the LSST project.
+
+
+.. _Gen3 Butler: https://dmtn-056.lsst.io/
+.. _SuperTask: https://dmtn-055.lsst.io/
+.. _Parsl: https://github.com/Parsl/parsl

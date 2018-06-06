@@ -210,6 +210,7 @@ Airflow, Pegasus, and PanDA for further tests in which the chosen candidates wil
 be used to orchestrate execution of a few specific LSST pipelines (yet to be
 determined) in NCSA’s HPC environment.
 
+.. include:: include/addendum.txt
 .. include:: include/airflow.txt
 .. include:: include/cloudslang.txt
 .. include:: include/makeflow.txt
