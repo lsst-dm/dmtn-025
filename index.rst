@@ -210,6 +210,48 @@ Airflow, Pegasus, and PanDA for further tests in which the chosen candidates wil
 be used to orchestrate execution of a few specific LSST pipelines (yet to be
 determined) in NCSA’s HPC environment.
 
+.. _followon:
+
+Follow-on to the Summary for Status Oct 2019
+============================================
+
+Following this workflow management system survey, the first BPS prototype workflows were
+implemented in Pegasus for runtime execution.  These workflows were leveraged against
+some small test datasets (e.g., testdata_ci_hsc package).
+These were executed on the 'Verification Cluster' of servers run by NCSA for LSST DM by first submitting
+HTCondor glide-in jobs to the Slurm scheduler ('pilot jobs' that effectively transform the Slurm compute
+nodes into a Condor pool.) The BPS prototype workflows were
+also the basis for small scale tests in the LSST DM AWS POC work.
+
+Within its workflow execution Pegasus utilizes HTCondor DAGMan; in some sense DAGMan is the
+inner engine driving the work of the Directed Acyclic Graphs, with Pegasus serving as a
+layer of management/organization,  monitoring, and additional features/plugins, etc., 
+wrapping HTCondor DAGMan and the Condor layer at which jobs run.
+
+Following these small scale tests, the BPS workflows are now targeting support for large scale production
+and operations.  The BPS effort is taking this opportunity to undergo a recasting, with the plan
+to construct and wrap HTCondor DAGMan workflows directly. These DAGs will submit and manage
+HTCondor jobs to pools of resources.  This offers a simplification to the development, reducing the number
+of layers/tools as the BPS is integrated with the Science Dags, Quantum Graphs, etc., of the Gen3 system.
+The DM team will also utlize enhanced direct collaboration with the HTCondor team (e.g., in
+efforts such as the DM AWS POC) to assist with the integration with HTCondor DAGMan workflows.
+The HTCondor DAGMan based BPS workflows will be tested on the nascent and increasing pool
+of HTCondor batch system nodes at NCSA.
+
+In addition to DM work of prototyping BPS workflows against HTCondor clusters running at NCSA, the
+DM AWS POC effort is investigating the execution of workflows on HTCondor pools constructed via
+the condor_annex mechanism within AWS cloud. Testing has demonstrated that full HTCondor pools, central manager
+and worker nodes, can be launched and prototype BPS workflows executed for the first case of testdata_ci_hsc.
+The condor_annex approach continues to evolve and improve in its usability.
+In the past (at the HTCondor 8.6 level) it was advisable to utilize base AMIs
+that the HTCondor team provided / made publically available. In current work at the HTCondor 8.9.3 level, we see
+that worker nodes AMIs conformable to the condor_annex can be readily created by installing a few condor packages,
+and that customized configuration can be deployed to worker nodes at the time of condor_annex invocation.
+The DM AWS POC effort will continue tests at increasingly larger scales.
+In local testing we can demonstrate the annex of AWS worker nodes to an on-premises central manager at
+NCSA, though full security and trust between such AWS workers and LSST DM HTCondor resources at NCSA
+requires further investigation.
+
 .. include:: include/addendum.txt
 .. include:: include/airflow.txt
 .. include:: include/cloudslang.txt
